@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="profile-container">
+    <img th:src="@{/files/{fileName}(fileName=${taxForm.taxPath})}" alt="Profile Picture" class="img-thumbnail profile-picture"/>
+    <table class="table profile-table">
+        <tbody>
+        <tr>
+            <th>Tax Year</th>
+            <td th:text="${taxForm.taxYear}"></td>
+        </tr>
+        <tr>
+            <th>Tax Amount</th>
+            <td th:text="${taxForm.taxAmount}"></td>
+        </tr>
+        <tr>
+            <th>Tax Type</th>
+            <td th:text="${taxForm.taxType}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/tax/update/{id}(id=${taxForm.taxId})}" class="btn btn-secondary">Update Profile</a>
+        <a th:href="@{/tax/download/{id}(id=${taxForm.taxId})}" class="btn btn-secondary">Download Profile as PDF</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Registration Form</title>
+    <link rel="stylesheet" href="/static/css/assetRegistration.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Asset Registration Form</h2>
+    <form th:action="@{/updateInvoice}" method="POST" enctype="multipart/form-data">
+        <input type="hidden"  th:value="${invoice.invoiceId}" name="invoiceId" >
+        <!-- Invoice Date Field -->
+        <div class="form-group">
+            <label for="invoice-date">Invoice Date:</label>
+            <input type="date" id="invoice-date" th:value="${invoice.invoiceDate}" name="invoiceDate" required>
+        </div>
+
+        <!-- Invoice Amount Field -->
+        <div class="form-group">
+            <label for="invoice-amount">Invoice Amount ($):</label>
+            <input type="number" id="invoice-amount" th:value="${invoice.invoiceAmount}" name="invoiceAmount" required min="0" step="0.01">
+        </div>
+
+        <!-- Vendor Name Field -->
+        <div class="form-group">
+            <label for="vendor-name">Vendor Name:</label>
+            <input type="text" id="vendor-name" th:value="${invoice.vendorsName}" name="vendorsName" required placeholder="Enter vendor's name">
+        </div>
+
+        <!-- Vendor Email Field -->
+        <div class="form-group">
+            <label for="vendor-email">Vendor Email:</label>
+            <input type="email" id="vendor-email" th:value="${invoice.vendorsEmail}" name="vendorsEmail" required placeholder="Enter vendor's email">
+        </div>
+
+        <!-- Invoice File Upload -->
+        <div class="form-group">
+            <label for="invoice-file">Upload Invoice (PDF or Excel):</label>
+            <input type="file" id="invoice-file" name="invoiceFile" accept="image/*" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Update Invoice</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

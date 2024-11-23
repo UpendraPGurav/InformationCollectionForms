@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Submission Form</title>
+    <link rel="stylesheet" href="/static/css/invoiceForm.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Invoice Submission Form</h2>
+    <form th:action="@{/registerInvoice}" method="POST" enctype="multipart/form-data">
+        <!-- Invoice Date Field -->
+        <div class="form-group">
+            <label for="invoice-date">Invoice Date:</label>
+            <input type="date" id="invoice-date" name="invoiceDate" required>
+        </div>
+
+        <!-- Invoice Amount Field -->
+        <div class="form-group">
+            <label for="invoice-amount">Invoice Amount ($):</label>
+            <input type="number" id="invoice-amount" name="invoiceAmount" required min="0" step="0.01">
+        </div>
+
+        <!-- Vendor Name Field -->
+        <div class="form-group">
+            <label for="vendor-name">Vendor Name:</label>
+            <input type="text" id="vendor-name" name="vendorsName" required placeholder="Enter vendor's name">
+        </div>
+
+        <!-- Vendor Email Field -->
+        <div class="form-group">
+            <label for="vendor-email">Vendor Email:</label>
+            <input type="email" id="vendor-email" name="vendorsEmail" required placeholder="Enter vendor's email">
+        </div>
+
+        <!-- Invoice File Upload -->
+        <div class="form-group">
+            <label for="invoice-file">Upload Invoice (PDF or Excel):</label>
+            <input type="file" id="invoice-file" name="invoiceFile" accept="image/*" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Submit Invoice</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Registration Form</title>
+    <link rel="stylesheet" href="/static/css/assetRegistration.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Asset Registration Form</h2>
+    <form th:action="@{/updateEmployee}" method="POST" enctype="multipart/form-data">
+        <input type="hidden"  th:value="${employee.empId}" name="assetId" >
+
+        <div class="form-group">
+            <label for="employee-name">Employee Name:</label>
+            <input type="text" id="employee-name" name="employee_name" th:value="${employee.empName}" required placeholder="Enter employee's name">
+        </div>
+
+        <!-- Performance Rating Field -->
+        <div class="form-group">
+            <label for="performance-rating">Performance Rating:</label>
+            <select id="performance-rating" th:value="${employee.empRating}"   name="performance_rating" required>
+                <option value="">Select Rating</option>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="below-average">Below Average</option>
+                <option value="poor">Poor</option>
+            </select>
+        </div>
+
+        <!-- Review Period Field -->
+        <div class="form-group">
+            <label for="review-period">Review Period:</label>
+            <input type="month" id="review-period" th:value="${employee.empPeriod}"  name="review_period" required>
+        </div>
+
+        <!-- Supporting Document Upload -->
+        <div class="form-group">
+            <label for="supporting-document">Upload Supporting Document (PDF only):</label>
+            <input type="file" id="supporting-document"  name="supporting_document" accept="image/*" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Update Performance Review</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

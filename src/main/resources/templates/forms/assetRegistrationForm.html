@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Registration Form</title>
+    <link rel="stylesheet" href="/static/css/assetRegistration.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Asset Registration Form</h2>
+    <form th:action="@{/registerAsset}" method="POST" enctype="multipart/form-data">
+        <!-- Asset Name Field -->
+        <div class="form-group">
+            <label for="asset-name">Asset Name:</label>
+            <input type="text" id="asset-name" name="assetName" required placeholder="Enter asset name">
+        </div>
+
+        <!-- Asset Type Dropdown -->
+        <div class="form-group">
+            <label for="asset-type">Asset Type:</label>
+            <select id="asset-type" name="assetType" required>
+                <option value="">Select Asset Type</option>
+                <option value="equipment">Equipment</option>
+                <option value="furniture">Furniture</option>
+                <option value="vehicle">Vehicle</option>
+                <option value="property">Property</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Purchase Date Field -->
+        <div class="form-group">
+            <label for="purchase-date">Purchase Date:</label>
+            <input type="date" id="purchase-date" name="assetDate" required>
+        </div>
+
+        <!-- Asset Value Field -->
+        <div class="form-group">
+            <label for="asset-value">Asset Value ($):</label>
+            <input type="number" id="asset-value" name="assetValue" required min="0" step="0.01" placeholder="e.g., 1000.00">
+        </div>
+
+        <!-- Supporting Document Upload -->
+        <div class="form-group">
+            <label for="supporting-document">Upload Supporting Document (Image, PDF, or Excel):</label>
+            <input type="file" id="supporting-document" name="assetFile" accept=".jpg, .jpeg, .png, .pdf, .xls, .xlsx" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Register Asset</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

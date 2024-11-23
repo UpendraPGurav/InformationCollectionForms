@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tax List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--     <link rel="stylesheet" type="text/css" href="/static/css/style.css">-->
+    <style>
+        /* Optional: Add custom styles if needed */
+        .scrollable-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="text-center">Tax List</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered scrollable-table">
+            <thead>
+            <tr>
+                <th>Tax Year</th>
+                <th>Tax Amount</th>
+                <th>Tax Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(taxform)}">
+                <td colspan="4" class="text-center">No tax forms available.</td>
+            </tr>
+            <tr th:each="taxform : ${taxform}">
+                <td th:text="${taxform.taxYear}"></td>
+                <td th:text="${taxform.taxAmount}"></td>
+                <td th:text="${taxform.taxType}"></td>
+                <td>
+                    <a th:href="@{/tax/{id}(id=${taxform.taxId})}" class="btn btn-primary">View</a>
+                    <a th:href="@{/tax/delete/{id}(id=${taxform.taxId})}" class="btn btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this tax form?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

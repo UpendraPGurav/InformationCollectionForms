@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        /*body {*/
+        /*    font-family: 'Arial', sans-serif;*/
+        /*    background-color: #eef2f3;*/
+        /*    margin: 0;*/
+        /*    padding: 20px;*/
+        /*}*/
+        /*.profile-container {*/
+        /*    max-width: 800px;*/
+        /*    margin: 0 auto;*/
+        /*    background: white;*/
+        /*    border-radius: 8px;*/
+        /*    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+        /*    padding: 20px;*/
+        /*}*/
+        /*.img-thumbnail {*/
+        /*    border-radius: 50%;*/
+        /*    border: 2px solid #007BFF;*/
+        /*    width: 150px;*/
+        /*    height: 150px;*/
+        /*}*/
+        /*.profile-table {*/
+        /*    width: 100%;*/
+        /*    margin-top: 20px;*/
+        /*    border-collapse: collapse;*/
+        /*}*/
+        /*.profile-table th, .profile-table td {*/
+        /*    padding: 10px;*/
+        /*    text-align: left;*/
+        /*    border-bottom: 1px solid #ddd;*/
+        /*}*/
+        /*.text-center {*/
+        /*    text-align: center;*/
+        /*    margin-top: 20px;*/
+        /*}*/
+        /*.btn {*/
+        /*    padding: 10px 20px;*/
+        /*    margin: 5px;*/
+        /*    border: none;*/
+        /*    border-radius: 5px;*/
+        /*    background-color: #007BFF;*/
+        /*    color: white;*/
+        /*    text-decoration: none;*/
+        /*    cursor: pointer;*/
+        /*    transition: background-color 0.3s;*/
+        /*}*/
+        /*.btn:hover {*/
+        /*    background-color: #0056b3;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img th:src="@{/files/{fileName}(fileName=${asset.assetFilePath})}" alt="Profile Picture" class="img-thumbnail profile-picture"/>
+        <table class="table profile-table">
+            <tbody>
+                <tr>
+                    <th>Asset Name</th>
+                    <td th:text="${asset.assetName}"></td>
+                </tr>
+                <tr>
+                    <th>Type of Asset</th>
+                    <td th:text="${asset.assetType}"></td>
+                </tr>
+                <tr>
+                    <th>Date Acquired</th>
+                    <td th:text="${asset.assetDate}"></td>
+                </tr>
+                <tr>
+                    <th>Current Value</th>
+                    <td th:text="${asset.assetValue}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a th:href="@{/asset/update/{id}(id=${asset.assetId})}" class="btn">Edit Profile</a>
+            <a th:href="@{/asset/download/{id}(id=${asset.assetId})}" class="btn">Download as PDF</a>
+        </div>
+    </div>
+</body>
+</html>

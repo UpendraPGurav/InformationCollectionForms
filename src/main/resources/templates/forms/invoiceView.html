@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice </title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="profile-container">
+    <img th:src="@{/files/{fileName}(fileName=${asset.assetFilePath})}" alt="Profile Picture" class="img-thumbnail profile-picture"/>
+    <table class="table profile-table">
+        <tbody>
+        <tr>
+            <th>Invoice Date</th>
+            <td th:text="${invoice.invoiceDate}"></td>
+        </tr>
+        <tr>
+            <th>Invoice Amount</th>
+            <td th:text="${invoice.invoiceAmount}"></td>
+        </tr>
+        <tr>
+            <th>Vendors Name</th>
+            <td th:text="${invoice.vendorsName}"></td>
+        </tr>
+
+        <tr>
+            <th>Vendors Email</th>
+            <td th:text="${invoice.vendorsEmail}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/invoice/update/{id}(id=${invoice.invoiceId})}" class="btn btn-secondary">Update Profile</a>
+        <a th:href="@{/invoice/download/{id}(id=${invoice.invoiceId})}" class="btn btn-secondary">Download Profile as PDF</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Save to Local Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        img {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Upload an Image</h1>
+<input type="file" id="imageInput" accept="image/*">
+<button id="saveButton">Save Image</button>
+<button id="loadButton">Load Image</button>
+<h2>Preview:</h2>
+<img id="imagePreview" src="" alt="Image Preview">
+
+<script>
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const saveButton = document.getElementById('saveButton');
+    const loadButton = document.getElementById('loadButton');
+
+    // Save image to local storage
+    saveButton.addEventListener('click', () => {
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const imageData = event.target.result;
+                localStorage.setItem('savedImage', imageData);
+                alert('Image saved to local storage!');
+            };
+            reader.readAsDataURL(file); // Read file as a data URL
+        } else {
+            alert('Please select an image file first.');
+        }
+    });
+
+    // Load image from local storage
+    loadButton.addEventListener('click', () => {
+        const savedImage = localStorage.getItem('savedImage');
+        if (savedImage) {
+            imagePreview.src = savedImage;
+            alert('Image loaded from local storage!');
+        } else {
+            alert('No image found in local storage.');
+        }
+    });
+</script>
+</body>
+</html>

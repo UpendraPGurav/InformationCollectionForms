@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/taxForm.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Tax Submission Form</h2>
+    <form th:action="@{/submitTaxForm}" method="POST" enctype="multipart/form-data">
+        <!-- Tax Year Field -->
+        <div class="form-group">
+            <label for="tax-year">Tax Year:</label>
+            <input type="text" id="tax-year" name="year" required min="1900" max="2100" placeholder="e.g., 2023">
+        </div>
+
+        <!-- Tax Amount Field -->
+        <div class="form-group">
+            <label for="tax-amount">Tax Amount ($):</label>
+            <input type="number" id="tax-amount" name="amount" required min="0" step="0.01" placeholder="e.g., 5000.00">
+        </div>
+
+        <!-- Tax Type Dropdown -->
+        <div class="form-group">
+            <label for="tax-type">Tax Type:</label>
+            <select id="tax-type" name="type" required>
+                <option value="">Select Tax Type</option>
+                <option value="income-tax">Income Tax</option>
+                <option value="corporate-tax">Corporate Tax</option>
+                <option value="property-tax">Property Tax</option>
+                <option value="sales-tax">Sales Tax</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Tax Document Upload -->
+        <div class="form-group">
+            <label for="tax-document">Upload Tax Document (PDF or Excel):</label>
+            <input type="file" id="tax-document" name="taxFile" accept="image/*" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Submit Tax Information</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

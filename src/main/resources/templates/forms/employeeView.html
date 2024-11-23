@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="profile-container">
+    <img th:src="@{/files/{fileName}(fileName=${emp.empFilePath})}" alt="Profile Picture" class="img-thumbnail profile-picture"/>
+    <table class="table profile-table">
+        <tbody>
+        <tr>
+            <th>Employee Name</th>
+            <td th:text="${emp.empName}"></td>
+        </tr>
+        <tr>
+            <th>Employee Rating </th>
+            <td th:text="${emp.empRating}"></td>
+        </tr>
+
+        <tr>
+            <th>Review Month</th>
+            <td th:text="${emp.empPeriod}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/employee/update/{id}(id=${emp.empId})}" class="btn btn-secondary">Update Profile</a>
+        <a th:href="@{/employee/download/{id}(id=${emp.empId})}" class="btn btn-secondary">Download Profile as PDF</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Assets</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" type="text/css" href="/static/css/style.css"></head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2 class="text-center">User Profiles</h2>-->
+<!--    <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Asset Name</th>-->
+<!--            <th>Asset Type</th>-->
+<!--            <th>Asset Date</th>-->
+<!--            <th>Asset Amount</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="asset : ${assets}">-->
+<!--            <td th:text="${asset.assetName}"></td>-->
+<!--            <td th:text="${asset.assetType}"></td>-->
+<!--            <td th:text="${asset.assetDate}"></td>-->
+<!--            <td th:text="${asset.assetValue}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/asset/{id}(id=${asset.assetId})}" class="btn btn-primary">View</a>-->
+<!--                <a th:href="@{/asset/delete/{id}(id=${asset.assetId})}" class="btn btn-danger">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tax List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--     <link rel="stylesheet" type="text/css" href="/static/css/style.css">-->
+    <style>
+        /* Optional: Add custom styles if needed */
+        .scrollable-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="text-center">Asset List</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered scrollable-table">
+            <thead>
+            <tr>
+                <th>Asset Name</th>
+                <th>Asset Type</th>
+                <th>Asset Date</th>
+                <th>Asset Amount</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(assets)}">
+                <td colspan="4" class="text-center">No tax forms available.</td>
+            </tr>
+            <tr th:each="asset : ${assets}">
+                <td th:text="${asset.assetName}"></td>
+                <td th:text="${asset.assetType}"></td>
+                <td th:text="${asset.assetDate}"></td>
+                <td th:text="${asset.assetValue}"></td>
+                <td>
+                    <a th:href="@{/asset/{id}(id=${asset.assetId})}" class="btn btn-primary">View</a>
+                    <a th:href="@{/profile/delete/{id}(id=${asset.assetId})}" class="btn btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this Expense form?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

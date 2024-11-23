@@ -1,0 +1,83 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Assets</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" type="text/css" href="/static/css/style.css"></head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2 class="text-center">User Profiles</h2>-->
+<!--    <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Employee Name</th>-->
+<!--            <th>Employee Rating</th>-->
+<!--            <th>Review Month</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="emp : ${emp}">-->
+<!--            <td th:text="${emp.empName}"></td>-->
+<!--            <td th:text="${emp.empRating}"></td>-->
+<!--            <td th:text="${emp.empPeriod}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/employee/{id}(id=${emp.empId})}" class="btn btn-primary">View</a>-->
+<!--                <a th:href="@{/employee/delete/{id}(id=${emp.empId})}" class="btn btn-danger">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--     <link rel="stylesheet" type="text/css" href="/static/css/style.css">-->
+    <style>
+        /* Optional: Add custom styles if needed */
+        .scrollable-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="text-center">Expense List</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered scrollable-table">
+            <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Employee Rating</th>
+                <th>Review Month</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(emp)}">
+                <td colspan="4" class="text-center">No tax forms available.</td>
+            </tr>
+            <tr th:each="emp : ${emp}">
+                <td th:text="${emp.empName}"></td>
+                <td th:text="${emp.empRating}"></td>
+                <td th:text="${emp.empPeriod}"></td>
+                <td>
+                    <a th:href="@{/employee/{id}(id=${emp.empId})}" class="btn btn-primary">View</a>
+                    <a th:href="@{/employee/delete/{id}(id=${emp.empId})}" class="btn btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this Employee Rating form?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

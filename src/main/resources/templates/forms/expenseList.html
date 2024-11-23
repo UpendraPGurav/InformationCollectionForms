@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">User Profiles</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Expense Date</th>
+            <th>Expense Amount</th>
+            <th>Expense Category</th>
+            <th>Expense Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="expenseForm : ${expenseForm}">
+            <td th:text="${expenseForm.expenseDate}"></td>
+            <td th:text="${expenseForm.expenseAmount}"></td>
+            <td th:text="${expenseForm.expenseCategory}"></td>
+            <td th:text="${expenseForm.expenseDescription}"></td>
+            <td>
+                <a th:href="@{/profile/{id}(id=${expenseForm.expenseId})}" class="btn btn-primary">View</a>
+                <a th:href="@{/profile/delete/{id}(id=${expenseForm.expenseId})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tax List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--     <link rel="stylesheet" type="text/css" href="/static/css/style.css">-->
+    <style>
+        /* Optional: Add custom styles if needed */
+        .scrollable-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h2 class="text-center">Tax List</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered scrollable-table">
+            <thead>
+            <tr>
+                <th>Expense Date</th>
+                <th>Expense Amount</th>
+                <th>Expense Category</th>
+                <th>Expense Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(taxform)}">
+                <td colspan="4" class="text-center">No tax forms available.</td>
+            </tr>
+            <tr th:each="expenseForm : ${expenseForm}">
+                <td th:text="${expenseForm.expenseDate}"></td>
+                <td th:text="${expenseForm.expenseAmount}"></td>
+                <td th:text="${expenseForm.expenseCategory}"></td>
+                <td th:text="${expenseForm.expenseDescription}"></td>
+                <td>
+                    <a th:href="@{/profile/{id}(id=${expenseForm.expenseId})}" class="btn btn-primary">View</a>
+                    <a th:href="@{/profile/delete/{id}(id=${expenseForm.expenseId})}" class="btn btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this Expense form?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

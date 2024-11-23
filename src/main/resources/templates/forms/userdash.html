@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/css/userdash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="user-dashboard">
+    <nav class="navbar">
+        <h2>User Dashboard</h2>
+        <ul>
+            <li><a th:href="@{/taxform}"><i class="fas fa-file-invoice"></i> Tax Form</a></li>
+            <li><a th:href="@{/expenseform}"><i class="fas fa-money-bill-wave"></i> Expense Form</a></li>
+            <li><a th:href="@{/asset}"><i class="fas fa-box"></i> Asset Form</a></li>
+            <li><a th:href="@{/employee}"><i class="fas fa-star"></i> Employee Rating</a></li>
+            <li><a th:href="@{/invoice}"><i class="fas fa-file-invoice-dollar"></i> Invoice Form</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="header">
+            <h1>Welcome, User</h1>
+            <p>Your submissions and feedback at a glance.</p>
+        </header>
+
+        <div class="submission-status">
+            <div class="card">
+                <h3>Tax Forms</h3>
+                <p>Submitted: <strong>3</strong></p><br>
+                <a class="action-btn" th:href="@{/taxform}">Submit New Tax Form</a>
+            </div>
+            <div class="card">
+                <h3>Expense Forms</h3>
+                <p>Submitted: <strong>5</strong></p><br>
+                <a class="action-btn" th:href="@{/expenseform}">Submit New Expense Form</a>
+            </div>
+            <div class="card">
+                <h3>Assets</h3>
+                <p>Submitted: <strong>2</strong></p><br>
+                <a class="action-btn" th:href="@{/asset}">Submit New Asset Form</a>
+            </div>
+            <div class="card">
+                <h3>Employee Ratings</h3>
+                <p>Submitted: <strong>4</strong></p><br>
+                <a class="action-btn" th:href="@{/employee}">Submit New Employee Rating Form</a>
+            </div>
+            <div class="card">
+                <h3>Invoices</h3>
+                <p>Submitted: <strong>4</strong></p><br>
+                <a class="action-btn" th:href="@{/invoice}">Submit New Invoice Form</a>
+            </div>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>
